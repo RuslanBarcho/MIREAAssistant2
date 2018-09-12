@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Assistant</string>
+    <string name="title_schedule">Расписание</string>
+    <string name="title_settings">Настройки</string>
+    <string name="week_odd">Нечетная</string>
+    <string name="week_even">Четная</string>
+
+    <string-array name="schedule_days">
+        <item>Понедельник</item>
+        <item>Вторник</item>
+        <item>Среда</item>
+        <item>Четверг</item>
+        <item>Пятница</item>
+        <item>Суббота</item>
+    </string-array>
+
+    <string name="tuesday_cut">ВТ</string>
+    <string name="wednesday_cut">СР</string>
+    <string name="thursday_cut">ЧТ</string>
+    <string name="friday_cut">ПТ</string>
+    <string name="saturday_cut">СБ</string>
+    <string name="monday_cut">ПН</string>
+</resources>

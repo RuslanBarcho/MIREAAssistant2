@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_background"
+    android:orientation="vertical"
+    tools:context=".Fragments.GroupDialogFragment">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="Ваша группа:"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/group_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textCapCharacters"
+        android:maxLength="10"
+        android:digits="0,1,2,3,4,5,6,7,8,9,йцукенгшщзхъфывапролджэёячсмитьбю,ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЁЯЧСМИТЬБЮ,-"
+        android:layout_gravity="center_vertical|center_horizontal|center"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:gravity="center_vertical"
+        android:hint="XXXX-00-00"
+        android:paddingBottom="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/button_download_dialog"
+        android:layout_width="65dp"
+        android:layout_height="40dp"
+        android:layout_alignEnd="@+id/group_input"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_vertical|center"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/blue_ripple"
+        android:gravity="center"
+        android:maxHeight="25dp"
+        android:maxWidth="25dp"
+        android:text="Ок"
+        android:textColor="@android:color/background_light"
+        android:textSize="14sp" />
+
+</LinearLayout>

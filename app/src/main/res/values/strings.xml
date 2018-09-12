@@ -1,0 +1,30 @@
+<resources>
+
+    <string name="app_name">Assistant</string>
+    <string name="title_schedule">Schedule</string>
+    <string name="title_settings">Settings</string>
+    <string name="week_odd">Odd</string>
+    <string name="week_even">Even</string>
+
+    <string-array name="schedule_days">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+    </string-array>
+
+    <string name="tuesday_cut">TU</string>
+    <string name="wednesday_cut">WE</string>
+    <string name="thursday_cut">TH</string>
+    <string name="friday_cut">FR</string>
+    <string name="saturday_cut">SA</string>
+    <string name="monday_cut">MO</string>
+
+    <string name="about_title">MIREA Assistant 2.0 \n by Ruslan Vinter</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
