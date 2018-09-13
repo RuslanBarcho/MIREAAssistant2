@@ -73,7 +73,7 @@ public class APIWrapper {
                 })
                 .subscribe((Odd odd) -> {
                     String name = odd.getName().toString();
-                    String type = checkNull(odd.getType()).toString();
+                    String type = getType(checkNull(odd.getType()).toString());
                     String room = checkNull(odd.getRoom()).toString();
                     String teacher = checkNull(odd.getTeacher()).toString();
                     TableSchedule tableSchedule = new TableSchedule(name, 1, oddList.size(), type, room, teacher);
@@ -114,7 +114,7 @@ public class APIWrapper {
                 })
                 .subscribe((Even even) -> {
                     String name = even.getName().toString();
-                    String type = checkNull(even.getType()).toString();
+                    String type = getType(checkNull(even.getType()).toString());
                     String room = checkNull(even.getRoom()).toString();
                     String teacher = checkNull(even.getTeacher()).toString();
                     TableSchedule tableSchedule = new TableSchedule(name, 0, evenList.size(), type, room, teacher);
@@ -144,6 +144,15 @@ public class APIWrapper {
             }
         }
         db.close();
+    }
+
+    private String getType(String type){
+        switch (type){
+            case "1.0": return "Пр";
+            case "0.0": return "Лк";
+            case "2.0": return "Лаб";
+        }
+        return "";
     }
 
     private Object checkNull(Object toCheck){

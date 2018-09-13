@@ -67,7 +67,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
             break;
         }
-        holder.name.setText(tableScheduleList.get(position).getName());
+        String nameToSet;
+        if (!tableScheduleList.get(position).getType().equals("")){
+            nameToSet = tableScheduleList.get(position).getName() + ", " + tableScheduleList.get(position).getType();
+        } else {
+            nameToSet = tableScheduleList.get(position).getName();
+        }
+
+        holder.name.setText(nameToSet);
         holder.room.setText(tableScheduleList.get(position).getClassroom());
         holder.teacher.setText(tableScheduleList.get(position).getTeacher());
     }
