@@ -41,29 +41,23 @@ public class LoginActivity extends AppCompatActivity implements APIWrapper.Sched
         groupEditText.addTextChangedListener(new TextWatcher() {
 
             @Override
-            public void afterTextChanged(Editable s) {
-
-            }
+            public void afterTextChanged(Editable s) { }
 
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(count == 4 & before == 3){
-                    groupEditText.setText(groupEditText.getText() + "-");
-                    groupEditText.setSelection(groupEditText.getText().length());
+                    groupEditText.append("-");
                 } else if (count == 4 & before == 5){
-                    groupEditText.setText(groupEditText.getText().subSequence(0, count - 1));
-                    groupEditText.setSelection(groupEditText.getText().length());
+                    int length = groupEditText.getText().length();
+                    if (length > 0) groupEditText.getText().delete(length - 1, length);
                 } else if (count == 7 & before == 6){
-                    groupEditText.setText(groupEditText.getText() + "-");
-                    groupEditText.setSelection(groupEditText.getText().length());
+                    groupEditText.append("-");
                 } else if (count == 7 & before == 8) {
-                    groupEditText.setText(groupEditText.getText().subSequence(0, count - 1));
-                    groupEditText.setSelection(groupEditText.getText().length());
+                    int length = groupEditText.getText().length();
+                    if (length > 0) groupEditText.getText().delete(length - 1, length);
                 }
             }
         });

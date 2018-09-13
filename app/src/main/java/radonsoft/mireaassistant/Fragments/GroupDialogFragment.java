@@ -64,7 +64,7 @@ public class GroupDialogFragment extends DialogFragment implements Button.OnClic
 
             @Override
             public void afterTextChanged(Editable s) {
-                editText.setSelection(editText.getText().length());
+                //editText.setSelection(editText.getText().length());
             }
 
             @Override
@@ -75,13 +75,15 @@ public class GroupDialogFragment extends DialogFragment implements Button.OnClic
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(count == 4 & before == 3){
-                    editText.setText(editText.getText() + "-");
+                    editText.append("-");
                 } else if (count == 4 & before == 5){
-                    editText.setText(editText.getText().subSequence(0, count - 1));
+                    int length = editText.getText().length();
+                    if (length > 0) editText.getText().delete(length - 1, length);
                 } else if (count == 7 & before == 6){
-                    editText.setText(editText.getText() + "-");
+                    editText.append("-");
                 } else if (count == 7 & before == 8) {
-                    editText.setText(editText.getText().subSequence(0, count - 1));
+                    int length = editText.getText().length();
+                    if (length > 0) editText.getText().delete(length - 1, length);
                 }
             }
         });

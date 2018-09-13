@@ -145,8 +145,8 @@ public class MainActivity extends AppCompatActivity implements GroupDialogFragme
     public void completeDownload() {
         Schedule schedule = (Schedule) fragmentManager.findFragmentByTag("one");
         schedule.updateRecycler(db);
-        setGroupName();
         saveGroupName(groupName);
+        setGroupName();
     }
 
     @Override
