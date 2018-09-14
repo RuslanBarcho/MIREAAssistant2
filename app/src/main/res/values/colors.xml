@@ -10,4 +10,6 @@
     <color name="refresh_progress_1">#2760F1</color>
     <color name="refresh_progress_2">#2784F1</color>
     <color name="refresh_progress_3">#2760F1</color>
+
+    <color name="inactive">#81212121</color>
 </resources>
