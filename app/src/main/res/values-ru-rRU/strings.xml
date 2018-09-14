@@ -23,4 +23,11 @@
     <string name="monday_cut">ПН</string>
     <string name="error_msg">Ошибка при загрузке расписания</string>
     <string name="downloaded_msg">Расписание успешно загружено</string>
+    <string name="button_next">Далее</string>
+    <string name="button_loading">Загрузка</string>
+    <string name="hello">Привет!</string>
+    <string name="group_enter">Введите Вашу группу</string>
+    <string name="your_group">Ваша группа:</string>
+    <string name="settings_title">Настройки</string>
+    <string name="settings_feedback">Обратная связь</string>
 </resources>

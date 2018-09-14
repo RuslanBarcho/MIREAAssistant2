@@ -2,7 +2,9 @@ package radonsoft.mireaassistant.Fragments;
 
 import android.arch.persistence.room.Room;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -27,6 +29,7 @@ public class Settings extends Fragment {
     Button test_button;
     Button test_button_2;
     Button test_button_3;
+    Button feedback;
 
     public Settings() {
         // Required empty public constructor
@@ -47,6 +50,7 @@ public class Settings extends Fragment {
         test_button = mRootView.findViewById(R.id.test_button);
         test_button_3 = mRootView.findViewById(R.id.test_button4);
         test_button_2 = mRootView.findViewById(R.id.test_button3);
+        feedback = mRootView.findViewById(R.id.button_feedback);
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         test_button.setText(preferences.getString("GroupName", "null"));
@@ -67,6 +71,10 @@ public class Settings extends Fragment {
                     .allowMainThreadQueries()
                     .build();
             db.tableScheduleDAO().nukeTable();
+        });
+
+        feedback.setOnClickListener(v -> {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://vk.com/r_vinter")));
         });
 
         test_button_3.setOnClickListener(v -> {

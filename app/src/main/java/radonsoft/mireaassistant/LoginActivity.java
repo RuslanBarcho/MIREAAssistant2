@@ -71,7 +71,7 @@ public class LoginActivity extends AppCompatActivity implements APIWrapper.Sched
              String result = translit.cyr2lat(groupEditText.getText().toString());
              apiWrapper.getScheduleOdd(result.toLowerCase(), 0);
              apiWrapper.getScheduleEven(result.toLowerCase(), 0);
-             login.setText("Загрузка");
+             login.setText(getResources().getString(R.string.button_loading));
          }
         });
     }
@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity implements APIWrapper.Sched
     @Override
     public void errorOdd(String e) {
         Toast.makeText(this, getResources().getText(R.string.error_msg), Toast.LENGTH_SHORT).show();
-        login.setText("Далее");
+        login.setText(getResources().getString(R.string.button_next));
     }
 
     @Override

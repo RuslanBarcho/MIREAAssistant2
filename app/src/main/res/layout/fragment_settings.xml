@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Fragments.Settings">
 
     <android.support.v7.widget.Toolbar
@@ -29,7 +28,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight="2"
                 android:gravity="center_vertical|fill_vertical"
-                android:text="Настройки"
+                android:text="@string/settings_title"
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
 
@@ -40,18 +39,19 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="match_parent"
-        android:layout_height="77dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="25dp"
-        android:src="@drawable/icon_app_large" />
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="77dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/icon_app_large" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -64,46 +64,57 @@
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="Ваша группа:"
-        android:textColor="@color/colorAccent"
-        android:textSize="18sp" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/your_group"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/test_button"
-        android:layout_width="wrap_content"
-        android:layout_height="38dp"
+            <Button
+                android:id="@+id/test_button"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
 
-        android:layout_gravity="center"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/grey_ripple"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:text="ИКБО-13-17"
-        android:textSize="16sp" />
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/grey_ripple"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:text="ИКБО-13-17"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/button_feedback"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:textAllCaps="false"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/grey_ripple"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:text="@string/settings_feedback"
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/test_button3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_gravity="center"
                 android:text="Clear Database"
                 android:visibility="gone" />
 
-    <Button
-        android:id="@+id/test_button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_gravity="center"
-        android:text="Log database"
-        android:visibility="invisible" />
+            <Button
+                android:id="@+id/test_button4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Log database"
+                android:visibility="gone" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

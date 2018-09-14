@@ -150,9 +150,9 @@ public class Schedule extends Fragment {
 
     private void configureWeekButton(){
         if (weekType == 1){
-            weekButton.setText("Нечетная");
+            weekButton.setText(getResources().getString(R.string.week_odd));
         } else {
-            weekButton.setText("Четная");
+            weekButton.setText(getResources().getString(R.string.week_even));
         }
     }
 

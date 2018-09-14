@@ -59,7 +59,7 @@
                     android:minWidth="120dp"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
-                    android:text="Четная"
+                    android:text="@string/week_even"
                     android:textColor="@android:color/white" />
             </RelativeLayout>
 
@@ -95,10 +95,10 @@
                     app:rrb_backgroundColor="@color/colorPrimary"
                     app:rrb_ripple="false"
                     app:rrb_text="@string/monday_cut"
-                    app:rrb_textStyle="bold"
                     app:rrb_textColor="@color/inactive"
                     app:rrb_textColorTo="#2760F1"
-                    app:rrb_textSize="17sp" />
+                    app:rrb_textSize="17sp"
+                    app:rrb_textStyle="bold" />
 
                 <co.ceryle.radiorealbutton.RadioRealButton
                     android:layout_width="wrap_content"
@@ -107,10 +107,10 @@
                     app:rrb_backgroundColor="@color/colorPrimary"
                     app:rrb_ripple="false"
                     app:rrb_text="@string/tuesday_cut"
-                    app:rrb_textStyle="bold"
                     app:rrb_textColor="@color/inactive"
                     app:rrb_textColorTo="#2760F1"
-                    app:rrb_textSize="17sp" />
+                    app:rrb_textSize="17sp"
+                    app:rrb_textStyle="bold" />
 
                 <co.ceryle.radiorealbutton.RadioRealButton
                     android:layout_width="wrap_content"
@@ -119,10 +119,10 @@
                     app:rrb_backgroundColor="@color/colorPrimary"
                     app:rrb_ripple="false"
                     app:rrb_text="@string/wednesday_cut"
-                    app:rrb_textStyle="bold"
                     app:rrb_textColor="@color/inactive"
                     app:rrb_textColorTo="#2760F1"
-                    app:rrb_textSize="17sp" />
+                    app:rrb_textSize="17sp"
+                    app:rrb_textStyle="bold" />
 
                 <co.ceryle.radiorealbutton.RadioRealButton
                     android:layout_width="wrap_content"
@@ -131,10 +131,10 @@
                     app:rrb_backgroundColor="@color/colorPrimary"
                     app:rrb_ripple="false"
                     app:rrb_text="@string/thursday_cut"
-                    app:rrb_textStyle="bold"
                     app:rrb_textColor="@color/inactive"
                     app:rrb_textColorTo="#2760F1"
-                    app:rrb_textSize="17sp" />
+                    app:rrb_textSize="17sp"
+                    app:rrb_textStyle="bold" />
 
                 <co.ceryle.radiorealbutton.RadioRealButton
                     android:layout_width="wrap_content"
@@ -143,10 +143,10 @@
                     app:rrb_backgroundColor="@color/colorPrimary"
                     app:rrb_ripple="false"
                     app:rrb_text="@string/friday_cut"
-                    app:rrb_textStyle="bold"
                     app:rrb_textColor="@color/inactive"
                     app:rrb_textColorTo="#2760F1"
-                    app:rrb_textSize="17sp" />
+                    app:rrb_textSize="17sp"
+                    app:rrb_textStyle="bold" />
 
                 <co.ceryle.radiorealbutton.RadioRealButton
                     android:layout_width="wrap_content"
@@ -156,10 +156,10 @@
                     app:rrb_backgroundColor="@color/colorPrimary"
                     app:rrb_ripple="false"
                     app:rrb_text="@string/saturday_cut"
-                    app:rrb_textStyle="bold"
                     app:rrb_textColor="@color/inactive"
                     app:rrb_textColorTo="#2760F1"
-                    app:rrb_textSize="17sp" />
+                    app:rrb_textSize="17sp"
+                    app:rrb_textStyle="bold" />
 
             </co.ceryle.radiorealbutton.RadioRealButtonGroup>
         </LinearLayout>
