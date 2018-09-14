@@ -21,4 +21,6 @@
     <string name="friday_cut">ПТ</string>
     <string name="saturday_cut">СБ</string>
     <string name="monday_cut">ПН</string>
+    <string name="error_msg">Ошибка при загрузке расписания</string>
+    <string name="downloaded_msg">Расписание успешно загружено</string>
 </resources>

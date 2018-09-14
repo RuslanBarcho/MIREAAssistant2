@@ -86,8 +86,4 @@ public class Settings extends Fragment {
     public void setGroup(String group){
         test_button.setText(group);
     }
-
-    public void testInterface(String name){
-
-    }
 }

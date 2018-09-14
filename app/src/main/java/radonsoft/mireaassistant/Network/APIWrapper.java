@@ -30,13 +30,11 @@ public class APIWrapper {
     private ArrayList<TableSchedule> evenList = new ArrayList<>();
 
     public APIWrapper(MainActivity activity, Context context){
-        //this.settings = context;
         this.context = context;
         this.mainActivity = activity;
     }
 
     public APIWrapper(LoginActivity activity, Context context){
-        //this.settings = context;
         this.context = context;
         this.loginActivity = activity;
     }
@@ -79,7 +77,13 @@ public class APIWrapper {
                     TableSchedule tableSchedule = new TableSchedule(name, 1, oddList.size(), type, room, teacher);
                     oddList.add(tableSchedule);
                     }, e -> {
-                    Log.e("Schedule", e.toString(), e);});
+                    Log.e("Schedule", e.toString(), e);
+                    if (loginActivity != null){
+                        (loginActivity).errorOdd(e.toString());
+                    } else {
+                        (mainActivity).errorOdd(e.toString());
+                    }
+                });
     }
 
     @SuppressLint("CheckResult")
@@ -120,7 +124,12 @@ public class APIWrapper {
                     TableSchedule tableSchedule = new TableSchedule(name, 0, evenList.size(), type, room, teacher);
                     evenList.add(tableSchedule);
                     }, e -> {
-                    Log.e("Schedule", e.toString(), e);});
+                    Log.e("Schedule", e.toString(), e);
+                    if (loginActivity != null){
+                        (loginActivity).errorOdd(e.toString());
+                    } else {
+                        (mainActivity).errorOdd(e.toString());
+                    }});
     }
 
     private void addToDatabase(int weektype, ArrayList<TableSchedule> toAdd){

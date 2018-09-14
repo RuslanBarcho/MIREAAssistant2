@@ -10,6 +10,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import radonsoft.mireaassistant.Helpers.Translit;
 import radonsoft.mireaassistant.Network.APIWrapper;
@@ -80,7 +81,8 @@ public class LoginActivity extends AppCompatActivity implements APIWrapper.Sched
 
     @Override
     public void errorOdd(String e) {
-
+        Toast.makeText(this, getResources().getText(R.string.error_msg), Toast.LENGTH_SHORT).show();
+        login.setText("Далее");
     }
 
     @Override

@@ -22,9 +22,12 @@
     <string name="saturday_cut">SA</string>
     <string name="monday_cut">MO</string>
 
+    <string name="error_msg">Error loading schedule</string>
+
     <string name="about_title">MIREA Assistant 2.0 \n by Ruslan Vinter</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="downloaded_msg">Schedule successfylly updated</string>
 
 </resources>

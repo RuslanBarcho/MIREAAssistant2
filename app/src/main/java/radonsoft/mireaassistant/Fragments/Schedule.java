@@ -3,6 +3,7 @@ package radonsoft.mireaassistant.Fragments;
 import android.arch.persistence.room.Room;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,11 +32,13 @@ public class Schedule extends Fragment {
     TextView textView;
     Button weekButton;
     AppDatabase db;
-
+    public SwipeRefreshLayout mSwipeRefreshLayout;
     String[] daysArray = {"Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"};
 
-    public Schedule() {
-        // Required empty public constructor
+    public Schedule() { }
+
+    public interface updateSchedule {
+        void updateSchedule();
     }
 
     @Override
@@ -88,6 +91,17 @@ public class Schedule extends Fragment {
             }
             configureWeekButton();
             updateRecycler(currentDay, db);
+        });
+        mSwipeRefreshLayout = mRootView.findViewById(R.id.refresh);
+        mSwipeRefreshLayout.setColorSchemeResources(
+                R.color.refresh_progress_1,
+                R.color.refresh_progress_2,
+                R.color.refresh_progress_3
+        );
+        //code for refresh widget
+        mSwipeRefreshLayout.setOnRefreshListener(() -> {
+            mSwipeRefreshLayout.setRefreshing(true);
+            ((updateSchedule) getActivity()).updateSchedule();
         });
 
         return mRootView;

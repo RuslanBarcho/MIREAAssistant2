@@ -1,6 +1,5 @@
 package radonsoft.mireaassistant.Fragments;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -20,8 +19,6 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.security.Key;
 
 import radonsoft.mireaassistant.R;
 
