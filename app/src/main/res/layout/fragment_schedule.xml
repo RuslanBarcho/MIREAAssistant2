@@ -65,92 +65,98 @@
 
         </android.support.v7.widget.Toolbar>
 
-        <co.ceryle.radiorealbutton.RadioRealButtonGroup
-            android:id="@+id/days"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:elevation="5dp"
-            android:paddingBottom="8dp"
-            android:paddingEnd="8dp"
-            android:paddingStart="8dp"
-            app:rrbg_animateDrawables_enter="overshoot"
-            app:rrbg_animateTexts_enter="overshoot"
-            app:rrbg_backgroundColor="@color/colorPrimary"
-            app:rrbg_dividerSize="2dp"
-            app:rrbg_selectorColor="#2760F1"
-            app:rrbg_selectorFullSize="true"
-            app:rrbg_selectorRadius="20dp"
-            app:rrbg_selectorSize="6dp">
+            android:orientation="vertical">
 
-            <co.ceryle.radiorealbutton.RadioRealButton
-                android:layout_width="wrap_content"
+            <co.ceryle.radiorealbutton.RadioRealButtonGroup
+                android:id="@+id/days"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                app:rrb_backgroundColor="@color/colorPrimary"
-                app:rrb_ripple="false"
-                app:rrb_text="@string/monday_cut"
-                app:rrb_textColor="#2760F1"
-                app:rrb_textColorTo="@color/colorPrimary"
-                app:rrb_textSize="16sp" />
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:paddingBottom="8dp"
+                app:rrbg_animateDrawables_enter="overshoot"
+                app:rrbg_animateTexts_enter="overshoot"
+                app:rrbg_backgroundColor="@android:color/transparent"
+                app:rrbg_dividerSize="2dp"
+                app:rrbg_selectorColor="#2760F1"
+                app:rrbg_selectorFullSize="true"
+                app:rrbg_selectorRadius="20dp"
+                app:rrbg_selectorSize="6dp">
 
-            <co.ceryle.radiorealbutton.RadioRealButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                app:rrb_backgroundColor="@color/colorPrimary"
-                app:rrb_ripple="false"
-                app:rrb_text="@string/tuesday_cut"
-                app:rrb_textColor="#2760F1"
-                app:rrb_textColorTo="@color/colorPrimary"
-                app:rrb_textSize="16sp" />
+                <co.ceryle.radiorealbutton.RadioRealButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    app:rrb_backgroundColor="@color/colorPrimary"
+                    app:rrb_ripple="false"
+                    app:rrb_text="@string/monday_cut"
+                    app:rrb_textColor="#2760F1"
+                    app:rrb_textColorTo="@color/colorPrimary"
+                    app:rrb_textSize="16sp" />
 
-            <co.ceryle.radiorealbutton.RadioRealButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                app:rrb_backgroundColor="@color/colorPrimary"
-                app:rrb_ripple="false"
-                app:rrb_text="@string/wednesday_cut"
-                app:rrb_textColor="#2760F1"
-                app:rrb_textColorTo="@color/colorPrimary"
-                app:rrb_textSize="16sp" />
+                <co.ceryle.radiorealbutton.RadioRealButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    app:rrb_backgroundColor="@color/colorPrimary"
+                    app:rrb_ripple="false"
+                    app:rrb_text="@string/tuesday_cut"
+                    app:rrb_textColor="#2760F1"
+                    app:rrb_textColorTo="@color/colorPrimary"
+                    app:rrb_textSize="16sp" />
 
-            <co.ceryle.radiorealbutton.RadioRealButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                app:rrb_backgroundColor="@color/colorPrimary"
-                app:rrb_ripple="false"
-                app:rrb_text="@string/thursday_cut"
-                app:rrb_textColor="#2760F1"
-                app:rrb_textColorTo="@color/colorPrimary"
-                app:rrb_textSize="16sp" />
+                <co.ceryle.radiorealbutton.RadioRealButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    app:rrb_backgroundColor="@color/colorPrimary"
+                    app:rrb_ripple="false"
+                    app:rrb_text="@string/wednesday_cut"
+                    app:rrb_textColor="#2760F1"
+                    app:rrb_textColorTo="@color/colorPrimary"
+                    app:rrb_textSize="16sp" />
 
-            <co.ceryle.radiorealbutton.RadioRealButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                app:rrb_backgroundColor="@color/colorPrimary"
-                app:rrb_ripple="false"
-                app:rrb_text="@string/friday_cut"
-                app:rrb_textColor="#2760F1"
-                app:rrb_textColorTo="@color/colorPrimary"
-                app:rrb_textSize="16sp" />
+                <co.ceryle.radiorealbutton.RadioRealButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    app:rrb_backgroundColor="@color/colorPrimary"
+                    app:rrb_ripple="false"
+                    app:rrb_text="@string/thursday_cut"
+                    app:rrb_textColor="#2760F1"
+                    app:rrb_textColorTo="@color/colorPrimary"
+                    app:rrb_textSize="16sp" />
 
-            <co.ceryle.radiorealbutton.RadioRealButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:background="@android:color/transparent"
-                app:rrb_backgroundColor="@color/colorPrimary"
-                app:rrb_ripple="false"
-                app:rrb_text="@string/saturday_cut"
-                app:rrb_textColor="#2760F1"
-                app:rrb_textColorTo="@color/colorPrimary"
-                app:rrb_textSize="16sp" />
+                <co.ceryle.radiorealbutton.RadioRealButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    app:rrb_backgroundColor="@color/colorPrimary"
+                    app:rrb_ripple="false"
+                    app:rrb_text="@string/friday_cut"
+                    app:rrb_textColor="#2760F1"
+                    app:rrb_textColorTo="@color/colorPrimary"
+                    app:rrb_textSize="16sp" />
 
-        </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+                <co.ceryle.radiorealbutton.RadioRealButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:background="@android:color/transparent"
+                    app:rrb_backgroundColor="@color/colorPrimary"
+                    app:rrb_ripple="false"
+                    app:rrb_text="@string/saturday_cut"
+                    app:rrb_textColor="#2760F1"
+                    app:rrb_textColorTo="@color/colorPrimary"
+                    app:rrb_textSize="16sp" />
+
+            </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+        </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler"

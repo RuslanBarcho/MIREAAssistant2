@@ -3,6 +3,7 @@ package radonsoft.mireaassistant;
 import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -85,6 +86,8 @@ public class MainActivity extends AppCompatActivity implements GroupDialogFragme
                 view.setSystemUiVisibility(view.getSystemUiVisibility() | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
                 this.getWindow().setNavigationBarColor(getColor(R.color.colorPrimary));
             }
+        } else {
+            getWindow().setStatusBarColor(getResources().getColor(R.color.colorBlue));
         }
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 

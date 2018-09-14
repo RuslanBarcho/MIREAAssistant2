@@ -37,6 +37,8 @@ public class LoginActivity extends AppCompatActivity implements APIWrapper.Sched
                 view.setSystemUiVisibility(view.getSystemUiVisibility() | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
                 this.getWindow().setNavigationBarColor(getColor(R.color.colorPrimary));
             }
+        } else {
+            getWindow().setStatusBarColor(getResources().getColor(R.color.colorBlue));
         }
 
         groupEditText.addTextChangedListener(new TextWatcher() {
