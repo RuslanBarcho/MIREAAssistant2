@@ -16,6 +16,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,7 +33,7 @@ public class GroupDialogFragment extends DialogFragment implements Button.OnClic
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.button_download_dialog){
-            hideKeyboard();
+            getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
             this.dismiss();
             ((GroupDialogListener) getActivity()).onGroupSelected(editText.getText().toString());
         }
@@ -55,8 +56,7 @@ public class GroupDialogFragment extends DialogFragment implements Button.OnClic
         editText.setFilters(new InputFilter[]{new InputFilter.AllCaps(), new InputFilter.LengthFilter(20)});
         editText.requestFocus();
         imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-        imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
+        getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         editText.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -98,7 +98,6 @@ public class GroupDialogFragment extends DialogFragment implements Button.OnClic
     @Override
     public void onViewCreated(View v, Bundle savedInstanceState){
         super.onViewCreated(v, savedInstanceState);
-        //imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
     }
 
     @Override
@@ -110,7 +109,7 @@ public class GroupDialogFragment extends DialogFragment implements Button.OnClic
         dialog.setOnKeyListener((dialog, keyCode, event) -> {
             if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                 imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-                hideKeyboard();
+                getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
                 return false;
             }
             return false;
@@ -121,12 +120,7 @@ public class GroupDialogFragment extends DialogFragment implements Button.OnClic
     @Override
     public void onCancel(DialogInterface dialog) {
         Log.i("Dialog", "Cancelled");
-        hideKeyboard();
+        getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         super.onCancel(dialog);
-    }
-
-    private void hideKeyboard(){
-        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-        imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
     }
 }
