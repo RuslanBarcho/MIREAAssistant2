@@ -119,7 +119,6 @@ public class GroupDialogFragment extends DialogFragment implements Button.OnClic
 
     @Override
     public void onCancel(DialogInterface dialog) {
-        Log.i("Dialog", "Cancelled");
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         super.onCancel(dialog);
     }

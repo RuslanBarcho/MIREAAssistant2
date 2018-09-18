@@ -92,18 +92,26 @@ public class Schedule extends Fragment {
             configureWeekButton();
             updateRecycler(currentDay, db);
         });
+        weekButton.setOnLongClickListener(view -> {
+            int temp = weekType;
+            getWeekNumber();
+            if(temp != weekType){
+                configureWeekButton();
+                updateRecycler(currentDay, db);
+            }
+            return true;
+        });
+        //code for refresh widget
         mSwipeRefreshLayout = mRootView.findViewById(R.id.refresh);
         mSwipeRefreshLayout.setColorSchemeResources(
                 R.color.refresh_progress_1,
                 R.color.refresh_progress_2,
                 R.color.refresh_progress_3
         );
-        //code for refresh widget
         mSwipeRefreshLayout.setOnRefreshListener(() -> {
             mSwipeRefreshLayout.setRefreshing(true);
             ((updateSchedule) getActivity()).updateSchedule();
         });
-
         return mRootView;
     }
 
@@ -138,9 +146,7 @@ public class Schedule extends Fragment {
     public int getToday(){
         Calendar calendar = Calendar.getInstance();
         int today = (calendar.get(Calendar.DAY_OF_WEEK)) - 2;
-        if (today == -1){
-            today = 0;
-        }
+        if (today == -1) today = 0;
         return today;
     }
 
