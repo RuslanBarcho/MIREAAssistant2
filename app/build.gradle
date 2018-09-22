@@ -6,8 +6,8 @@ android {
         applicationId "radonsoft.mireaassistant"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 6
-        versionName "2.0"
+        versionCode 7
+        versionName "2.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -51,6 +51,4 @@ dependencies {
     // database implementations
     implementation "android.arch.persistence.room:runtime:1.1.1"
     annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
-    //transliteration
-    implementation 'net.steamcrafted:load-toast:1.0.12'
 }

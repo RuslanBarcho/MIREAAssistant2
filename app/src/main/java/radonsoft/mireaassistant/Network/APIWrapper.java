@@ -67,6 +67,7 @@ public class APIWrapper {
                 })
                 .doOnComplete(() -> {
                     addToDatabase(1, oddList);
+                    getScheduleEven(groupName, 0);
                     Log.d("Schedule", "DONE ODD");
                 })
                 .subscribe((Odd odd) -> {

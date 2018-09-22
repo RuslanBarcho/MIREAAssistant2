@@ -70,7 +70,6 @@ public class LoginActivity extends AppCompatActivity implements APIWrapper.Sched
              Translit translit = new Translit();
              String result = translit.cyr2lat(groupEditText.getText().toString());
              apiWrapper.getScheduleOdd(result.toLowerCase(), 0);
-             apiWrapper.getScheduleEven(result.toLowerCase(), 0);
              login.setText(getResources().getString(R.string.button_loading));
          }
         });

@@ -129,7 +129,6 @@ public class MainActivity extends AppCompatActivity implements GroupDialogFragme
         String result = translit.cyr2lat(groupName);
         APIWrapper apiWrapper = new APIWrapper(this, getApplicationContext());
         apiWrapper.getScheduleOdd(result.toLowerCase(), 0);
-        apiWrapper.getScheduleEven(result.toLowerCase(), 0);
         this.groupName = groupName;
     }
 
