@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".Fragments.Schedule">
+        tools:context=".ui.schedule.Schedule">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar_schedule"
@@ -65,109 +65,23 @@
 
         </android.support.v7.widget.Toolbar>
 
-        <LinearLayout
+        <android.support.design.widget.TabLayout
+            android:id="@+id/scheduleTabLayout"
+            style="@style/AppTabLayout"
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:elevation="5dp"
-            android:orientation="vertical">
+            app:tabGravity="fill"
+            app:tabSelectedTextColor="@color/colorBlue"
+            android:elevation="5dp">
+        </android.support.design.widget.TabLayout>
 
-            <co.ceryle.radiorealbutton.RadioRealButtonGroup
-                android:id="@+id/days"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:paddingBottom="8dp"
-                app:rrbg_animateDrawables_enter="overshoot"
-                app:rrbg_animateTexts_enter="overshoot"
-                app:rrbg_backgroundColor="@android:color/transparent"
-                app:rrbg_dividerSize="0dp"
-                app:rrbg_selectorColor="#2760F1"
-                app:rrbg_selectorFullSize="false"
-                app:rrbg_selectorRadius="20dp"
-                app:rrbg_selectorSize="0dp">
-
-                <co.ceryle.radiorealbutton.RadioRealButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    app:rrb_backgroundColor="@color/colorPrimary"
-                    app:rrb_ripple="false"
-                    app:rrb_text="@string/monday_cut"
-                    app:rrb_textColor="@color/inactive"
-                    app:rrb_textColorTo="#2760F1"
-                    app:rrb_textSize="17sp"
-                    app:rrb_textStyle="bold" />
-
-                <co.ceryle.radiorealbutton.RadioRealButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    app:rrb_backgroundColor="@color/colorPrimary"
-                    app:rrb_ripple="false"
-                    app:rrb_text="@string/tuesday_cut"
-                    app:rrb_textColor="@color/inactive"
-                    app:rrb_textColorTo="#2760F1"
-                    app:rrb_textSize="17sp"
-                    app:rrb_textStyle="bold" />
-
-                <co.ceryle.radiorealbutton.RadioRealButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    app:rrb_backgroundColor="@color/colorPrimary"
-                    app:rrb_ripple="false"
-                    app:rrb_text="@string/wednesday_cut"
-                    app:rrb_textColor="@color/inactive"
-                    app:rrb_textColorTo="#2760F1"
-                    app:rrb_textSize="17sp"
-                    app:rrb_textStyle="bold" />
-
-                <co.ceryle.radiorealbutton.RadioRealButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    app:rrb_backgroundColor="@color/colorPrimary"
-                    app:rrb_ripple="false"
-                    app:rrb_text="@string/thursday_cut"
-                    app:rrb_textColor="@color/inactive"
-                    app:rrb_textColorTo="#2760F1"
-                    app:rrb_textSize="17sp"
-                    app:rrb_textStyle="bold" />
-
-                <co.ceryle.radiorealbutton.RadioRealButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    app:rrb_backgroundColor="@color/colorPrimary"
-                    app:rrb_ripple="false"
-                    app:rrb_text="@string/friday_cut"
-                    app:rrb_textColor="@color/inactive"
-                    app:rrb_textColorTo="#2760F1"
-                    app:rrb_textSize="17sp"
-                    app:rrb_textStyle="bold" />
-
-                <co.ceryle.radiorealbutton.RadioRealButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:background="@android:color/transparent"
-                    app:rrb_backgroundColor="@color/colorPrimary"
-                    app:rrb_ripple="false"
-                    app:rrb_text="@string/saturday_cut"
-                    app:rrb_textColor="@color/inactive"
-                    app:rrb_textColorTo="#2760F1"
-                    app:rrb_textSize="17sp"
-                    app:rrb_textStyle="bold" />
-
-            </co.ceryle.radiorealbutton.RadioRealButtonGroup>
-        </LinearLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler"
+        <android.support.v4.view.ViewPager
+            android:id="@+id/scheduleViewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:elevation="0dp" />
+            android:layout_height="match_parent" />
+
     </LinearLayout>
+
+
 </android.support.v4.widget.SwipeRefreshLayout>

@@ -1,4 +1,4 @@
-package radonsoft.mireaassistant.Fragments;
+package radonsoft.mireaassistant.ui.settings;
 
 import android.app.Dialog;
 import android.content.Context;

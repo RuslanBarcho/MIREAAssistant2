@@ -1,4 +1,4 @@
-package radonsoft.mireaassistant.Network.Models;
+package radonsoft.mireaassistant.network.models;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

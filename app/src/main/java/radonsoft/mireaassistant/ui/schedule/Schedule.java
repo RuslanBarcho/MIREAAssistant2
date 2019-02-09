@@ -1,39 +1,77 @@
-package radonsoft.mireaassistant.Fragments;
+package radonsoft.mireaassistant.ui.schedule;
 
+import android.annotation.SuppressLint;
 import android.arch.persistence.room.Room;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import co.ceryle.radiorealbutton.RadioRealButtonGroup;
-import radonsoft.mireaassistant.Database.AppDatabase;
-import radonsoft.mireaassistant.Helpers.RecyclerViewAdapter;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnLongClick;
+import radonsoft.mireaassistant.database.AppDatabase;
 import radonsoft.mireaassistant.R;
+import radonsoft.mireaassistant.utils.ScheduleViewPagerAdapter;
 
 import android.support.annotation.NonNull;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Objects;
 
 public class Schedule extends Fragment {
 
     int currentDay = 0;
     int weekType = 0;
     View mRootView;
-    RadioRealButtonGroup days;
-    RecyclerView recyclerView;
-    RecyclerViewAdapter adapter;
-    TextView textView;
-    Button weekButton;
     AppDatabase db;
+    private ArrayList<SchedulePageFragment> fragments;
     public SwipeRefreshLayout mSwipeRefreshLayout;
+    private ScheduleViewPagerAdapter viewPagerAdapter;
     String[] daysArray = {"Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"};
+
+    @BindView(R.id.scheduleViewPager)
+    ViewPager viewPager;
+
+    @BindView(R.id.scheduleTabLayout)
+    TabLayout tabLayout;
+
+    @BindView(R.id.dayView)
+    TextView textView;
+
+    @BindView(R.id.week_button)
+    Button weekButton;
+
+    @OnClick(R.id.week_button)
+    void clickWeekButton(){
+        if (weekType == 1){
+            weekType = 0;
+        } else {
+            weekType = 1;
+        }
+        configureWeekButton();
+        updateRecycler();
+    }
+
+    @OnLongClick(R.id.week_button)
+    boolean longClickWeekButton(){
+        int temp = weekType;
+        getWeekNumber();
+        if(temp != weekType){
+            configureWeekButton();
+        }
+        updateRecycler();
+        return true;
+    }
 
     public Schedule() { }
 
@@ -55,52 +93,50 @@ public class Schedule extends Fragment {
             getWeekNumber();
             currentDay = getToday();
         }
-        configureAdapter();
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mRootView = inflater.inflate(R.layout.fragment_schedule, container, false);
-
-        // Configure view elements
-        days = mRootView.findViewById(R.id.days);
-        weekButton = mRootView.findViewById(R.id.week_button);
-        textView = mRootView.findViewById(R.id.dayView);
-        days.setPosition(currentDay);
+        ButterKnife.bind(this, mRootView);
         configureWeekButton();
 
-        //setting up recyclerView with database
-        recyclerView = mRootView.findViewById(R.id.recycler);
-        if (adapter != null){
-            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-            recyclerView.setAdapter(adapter);
-            textView.setText(daysArray[currentDay]);
+        fragments = new ArrayList<>();
+        for (int i = 0; i<6; i++){
+            Bundle bundle = new Bundle();
+            bundle.putInt("day", i);
+            bundle.putInt("weekType", weekType);
+            SchedulePageFragment fragment = new SchedulePageFragment();
+            fragment.setArguments(bundle);
+            fragments.add(fragment);
         }
 
-        days.setOnPositionChangedListener((button, position, t) -> {
-            updateRecycler(position, db);
-        });
+        viewPagerAdapter = new ScheduleViewPagerAdapter(getChildFragmentManager(), fragments);
+        viewPager.setAdapter(viewPagerAdapter);
+        viewPager.setOffscreenPageLimit(6);
+        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                currentDay = tab.getPosition();
+                textView.setText(daysArray[tab.getPosition()]);
+            }
 
-        weekButton.setOnClickListener(v -> {
-            if (weekType == 1){
-                weekType = 0;
-            } else {
-                weekType = 1;
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
             }
-            configureWeekButton();
-            updateRecycler(currentDay, db);
-        });
-        weekButton.setOnLongClickListener(view -> {
-            int temp = weekType;
-            getWeekNumber();
-            if(temp != weekType){
-                configureWeekButton();
-                updateRecycler(currentDay, db);
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
             }
-            return true;
         });
+        Objects.requireNonNull(tabLayout.getTabAt(currentDay)).select();
+
         //code for refresh widget
         mSwipeRefreshLayout = mRootView.findViewById(R.id.refresh);
         mSwipeRefreshLayout.setColorSchemeResources(
@@ -112,19 +148,15 @@ public class Schedule extends Fragment {
             mSwipeRefreshLayout.setRefreshing(true);
             ((updateSchedule) getActivity()).updateSchedule();
         });
+        mSwipeRefreshLayout.setEnabled(false);
+
         return mRootView;
     }
 
-    public void updateRecycler(int position, AppDatabase db){
-        currentDay = position;
-        adapter.updateData(db.tableScheduleDAO().getListByWeektypeAndNumber(weekType, currentDay * 6));
-        adapter.notifyDataSetChanged();
-        textView.setText(daysArray[position]);
-    }
-
-    public void updateRecycler(AppDatabase db){
-        adapter.updateData(db.tableScheduleDAO().getListByWeektypeAndNumber(weekType, currentDay * 6));
-        adapter.notifyDataSetChanged();
+    public void updateRecycler(){
+        for (int i = 0; i< 6; i++){
+            ((SchedulePageFragment) getChildFragmentManager().getFragments().get(i)).updateRecyclerView(weekType);
+        }
     }
 
     private void getWeekNumber() {
@@ -150,10 +182,6 @@ public class Schedule extends Fragment {
         return today;
     }
 
-    private void configureAdapter(){
-        adapter = new RecyclerViewAdapter(db.tableScheduleDAO().getListByWeektypeAndNumber(weekType, currentDay * 6));
-    }
-
     private void configureWeekButton(){
         if (weekType == 1){
             weekButton.setText(getResources().getString(R.string.week_odd));
@@ -164,7 +192,6 @@ public class Schedule extends Fragment {
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
-        //saving current fragment instance
         super.onSaveInstanceState(outState);
         outState.putInt("currentDay", currentDay);
         outState.putInt("weekType", weekType);
@@ -174,7 +201,7 @@ public class Schedule extends Fragment {
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (!hidden){
-            updateRecycler(currentDay, db);
+
         }
     }
 }

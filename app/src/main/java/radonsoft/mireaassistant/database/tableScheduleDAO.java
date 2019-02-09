@@ -1,4 +1,4 @@
-package radonsoft.mireaassistant.Database;
+package radonsoft.mireaassistant.database;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;

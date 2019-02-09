@@ -1,4 +1,4 @@
-package radonsoft.mireaassistant.Helpers;
+package radonsoft.mireaassistant.utils;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import radonsoft.mireaassistant.Database.TableSchedule;
+import radonsoft.mireaassistant.database.TableSchedule;
 import radonsoft.mireaassistant.R;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder> {

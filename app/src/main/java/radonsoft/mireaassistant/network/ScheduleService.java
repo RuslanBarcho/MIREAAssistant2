@@ -1,8 +1,8 @@
-package radonsoft.mireaassistant.Network;
+package radonsoft.mireaassistant.network;
 
 import io.reactivex.Single;
-import radonsoft.mireaassistant.Network.Forms.ScheduleForm;
-import radonsoft.mireaassistant.Network.Models.Schedule;
+import radonsoft.mireaassistant.network.forms.ScheduleForm;
+import radonsoft.mireaassistant.network.models.Schedule;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 

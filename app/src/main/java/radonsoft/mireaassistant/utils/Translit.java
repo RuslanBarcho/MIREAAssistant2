@@ -1,4 +1,4 @@
-package radonsoft.mireaassistant.Helpers;
+package radonsoft.mireaassistant.utils;
 
 public class Translit {
 

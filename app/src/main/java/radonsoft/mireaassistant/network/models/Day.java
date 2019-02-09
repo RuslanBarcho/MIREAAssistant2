@@ -1,4 +1,4 @@
-package radonsoft.mireaassistant.Network.Models;
+package radonsoft.mireaassistant.network.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

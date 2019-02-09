@@ -1,4 +1,4 @@
-package radonsoft.mireaassistant.Network;
+package radonsoft.mireaassistant.network;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import okhttp3.OkHttpClient;

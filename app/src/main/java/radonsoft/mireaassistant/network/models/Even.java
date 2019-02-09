@@ -1,9 +1,9 @@
-package radonsoft.mireaassistant.Network.Models;
+package radonsoft.mireaassistant.network.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Odd {
+public class Even {
 
     @SerializedName("name")
     @Expose
@@ -18,7 +18,7 @@ public class Odd {
     @Expose
     private Object room;
 
-    public Odd(Object name, Object type, Object teacher, Object room) {
+    public Even(Object name, Object type, Object teacher, Object room) {
         this.name = name;
         this.type = type;
         this.teacher = teacher;
@@ -58,3 +58,4 @@ public class Odd {
     }
 
 }
+

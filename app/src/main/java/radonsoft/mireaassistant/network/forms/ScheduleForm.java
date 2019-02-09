@@ -1,4 +1,4 @@
-package radonsoft.mireaassistant.Network.Forms;
+package radonsoft.mireaassistant.network.forms;
 
 /**
  * Created by Ruslan on 16.09.17.
