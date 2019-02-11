@@ -30,4 +30,5 @@
     <string name="your_group">Ваша группа:</string>
     <string name="settings_title">Настройки</string>
     <string name="settings_feedback">Обратная связь</string>
+    <string name="settings_manual_update">Обновить вручную</string>
 </resources>

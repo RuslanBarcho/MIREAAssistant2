@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.button_login)
     void login(){
-        if (groupEditText.getText().toString().length() == 10){
+        if (groupEditText.getText().toString().length() >= 10){
             Translit translit = new Translit();
             String result = translit.cyr2lat(groupEditText.getText().toString());
             viewModel.getSchedule(new ScheduleForm(0, 0, result.toLowerCase()), this);

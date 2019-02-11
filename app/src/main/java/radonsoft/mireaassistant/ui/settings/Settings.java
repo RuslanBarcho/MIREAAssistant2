@@ -12,9 +12,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import radonsoft.mireaassistant.database.AppDatabase;
 import radonsoft.mireaassistant.database.TableSchedule;
 import radonsoft.mireaassistant.R;
+import radonsoft.mireaassistant.ui.main.MainActivity;
 
 import android.support.annotation.NonNull;
 import android.widget.Button;
@@ -25,10 +29,31 @@ import java.util.List;
 public class Settings extends Fragment {
 
     View mRootView;
-    Button test_button;
+
+    @BindView(R.id.group_button)
+    Button groupButton;
+
+    @BindView(R.id.test_button3)
     Button test_button_2;
+
+    @BindView(R.id.test_button4)
     Button test_button_3;
-    Button feedback;
+
+    @OnClick(R.id.button_feedback)
+    void doFeedback(){
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://vk.com/r_vinter")));
+    }
+
+    @OnClick(R.id.button_refresh)
+    void refresh(){
+        ((MainActivity) getActivity()).updateSchedule();
+    }
+
+    @OnClick(R.id.group_button)
+    void showDialog(){
+        GroupDialogFragment dialogFragment = new GroupDialogFragment();
+        dialogFragment.show(getFragmentManager(), "dialog");
+    }
 
     public Settings() {
         // Required empty public constructor
@@ -43,26 +68,16 @@ public class Settings extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         mRootView = inflater.inflate(R.layout.fragment_settings, container, false);
-
-        test_button = mRootView.findViewById(R.id.test_button);
-        test_button_3 = mRootView.findViewById(R.id.test_button4);
-        test_button_2 = mRootView.findViewById(R.id.test_button3);
-        feedback = mRootView.findViewById(R.id.button_feedback);
-
+        ButterKnife.bind(this, mRootView);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        test_button.setText(preferences.getString("GroupName", "null"));
+        groupButton.setText(preferences.getString("GroupName", "null"));
         return mRootView;
     }
 
     @Override
     public void onViewCreated(@NonNull View f, Bundle savedInstanceState) {
         super.onViewCreated(f, savedInstanceState);
-        test_button.setOnClickListener(v -> {
-            GroupDialogFragment dialogFragment = new GroupDialogFragment();
-            dialogFragment.show(getFragmentManager(), "dialog");
-        });
 
         test_button_2.setOnClickListener(v -> {
             AppDatabase db;
@@ -70,10 +85,6 @@ public class Settings extends Fragment {
                     .allowMainThreadQueries()
                     .build();
             db.tableScheduleDAO().nukeTable();
-        });
-
-        feedback.setOnClickListener(v -> {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://vk.com/r_vinter")));
         });
 
         test_button_3.setOnClickListener(v -> {
@@ -91,6 +102,6 @@ public class Settings extends Fragment {
     }
 
     public void setGroup(String group){
-        test_button.setText(group);
+        groupButton.setText(group);
     }
 }
