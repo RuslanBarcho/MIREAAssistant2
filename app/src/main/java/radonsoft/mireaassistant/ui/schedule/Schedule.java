@@ -17,6 +17,7 @@ import butterknife.OnClick;
 import butterknife.OnLongClick;
 import radonsoft.mireaassistant.database.AppDatabase;
 import radonsoft.mireaassistant.R;
+import radonsoft.mireaassistant.ui.main.MainActivity;
 import radonsoft.mireaassistant.utils.ScheduleViewPagerAdapter;
 
 import android.support.annotation.NonNull;
@@ -114,7 +115,7 @@ public class Schedule extends Fragment {
             fragments.add(fragment);
         }
 
-        viewPagerAdapter = new ScheduleViewPagerAdapter(getChildFragmentManager(), fragments);
+        viewPagerAdapter = new ScheduleViewPagerAdapter(getChildFragmentManager(), fragments, getContext());
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setOffscreenPageLimit(6);
         tabLayout.setupWithViewPager(viewPager);
@@ -146,7 +147,7 @@ public class Schedule extends Fragment {
         );
         mSwipeRefreshLayout.setOnRefreshListener(() -> {
             mSwipeRefreshLayout.setRefreshing(true);
-            ((updateSchedule) getActivity()).updateSchedule();
+            ((MainActivity) getActivity()).updateSchedule();
         });
         mSwipeRefreshLayout.setEnabled(false);
 
@@ -169,9 +170,9 @@ public class Schedule extends Fragment {
             weekNumber ++;
         }
         if (weekNumber % 2 == 0){
-            weekType = 0;
-        } else {
             weekType = 1;
+        } else {
+            weekType = 0;
         }
     }
 

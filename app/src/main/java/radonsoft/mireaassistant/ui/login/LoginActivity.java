@@ -11,7 +11,11 @@ import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import radonsoft.mireaassistant.utils.Translit;
 import radonsoft.mireaassistant.network.forms.ScheduleForm;
 import radonsoft.mireaassistant.R;
@@ -21,20 +25,34 @@ import radonsoft.mireaassistant.utils.StyleApplicator;
 
 public class LoginActivity extends AppCompatActivity {
 
+    @BindView(R.id.group_input2)
     EditText groupEditText;
+
+    @BindView(R.id.button_login)
     Button login;
+
+    @OnClick(R.id.button_login)
+    void login(){
+        if (groupEditText.getText().toString().length() == 10){
+            Translit translit = new Translit();
+            String result = translit.cyr2lat(groupEditText.getText().toString());
+            viewModel.getSchedule(new ScheduleForm(0, 0, result.toLowerCase()), this);
+            login.setText(getResources().getString(R.string.button_loading));
+            groupEditText.setEnabled(false);
+            login.setEnabled(false);
+        }
+    }
+
     MainViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        groupEditText = findViewById(R.id.group_input2);
-        groupEditText.setFilters(new InputFilter[]{new InputFilter.AllCaps(), new InputFilter.LengthFilter(20)});
-        login = findViewById(R.id.button_login);
-
         StyleApplicator.style(this);
+        ButterKnife.bind(this);
+        viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        groupEditText.setFilters(new InputFilter[]{new InputFilter.AllCaps(), new InputFilter.LengthFilter(20)});
 
         groupEditText.addTextChangedListener(new TextWatcher() {
 
@@ -60,22 +78,22 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        login.setOnClickListener(v -> {
-         if (groupEditText.getText().toString().length() == 10){
-             Translit translit = new Translit();
-             String result = translit.cyr2lat(groupEditText.getText().toString());
-             viewModel.getSchedule(new ScheduleForm(0, 0, result.toLowerCase()), this);
-             login.setText(getResources().getString(R.string.button_loading));
-             groupEditText.setEnabled(false);
-         }
-        });
-
         viewModel.data.observe(this, data -> {
             if (data != null){
                 if (data){
                     changeToMain();
                     viewModel.data.postValue(null);
                 }
+            }
+        });
+
+        viewModel.error.observe(this, error -> {
+            if (error != null){
+                Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+                groupEditText.setEnabled(true);
+                login.setEnabled(true);
+                login.setText(getString(R.string.button_next));
+                viewModel.error.postValue(null);
             }
         });
     }

@@ -29,14 +29,12 @@ public class MainActivity extends AppCompatActivity implements GroupDialogFragme
 
     SharedPreferences sharedPreferences;
     FragmentManager fragmentManager;
-    LinearLayout linearLayout;
     BottomNavigationView navigation;
     MainViewModel viewModel;
     AppDatabase db;
     String groupName;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = item -> {
-        linearLayout = findViewById(R.id.container_content);
         switch (item.getItemId()) {
             case R.id.navigation_schedule:
                 fragmentManager.beginTransaction()
@@ -66,7 +64,6 @@ public class MainActivity extends AppCompatActivity implements GroupDialogFragme
 
         groupName = getGroupName();
 
-        linearLayout = findViewById(R.id.container_content);
         fragmentManager = getSupportFragmentManager();
         if (fragmentManager.findFragmentByTag("one") == null & fragmentManager.findFragmentByTag("two") == null) {
             fragmentManager.beginTransaction()
