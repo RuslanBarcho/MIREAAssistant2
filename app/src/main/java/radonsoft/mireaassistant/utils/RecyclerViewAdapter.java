@@ -15,7 +15,7 @@ import radonsoft.mireaassistant.R;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder> {
 
-    private List<TableSchedule> tableScheduleList = new ArrayList<TableSchedule>();
+    private List<TableSchedule> tableScheduleList;
 
     public RecyclerViewAdapter(List<TableSchedule> tableScheduleList){
         this.tableScheduleList = tableScheduleList;
@@ -47,23 +47,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
             break;
             case 2: {
-                holder.beginTime.setText("13:00");
-                holder.endTime.setText("14:30");
+                holder.beginTime.setText("13:10");
+                holder.endTime.setText("14:40");
             }
             break;
             case 3: {
-                holder.beginTime.setText("14:40");
-                holder.endTime.setText("16:10");
+                holder.beginTime.setText("14:50");
+                holder.endTime.setText("16:20");
             }
             break;
             case 4: {
-                holder.beginTime.setText("16:20");
-                holder.endTime.setText("17:50");
+                holder.beginTime.setText("16:30");
+                holder.endTime.setText("18:00");
             }
             break;
             case 5: {
-                holder.beginTime.setText("18:00");
-                holder.endTime.setText("19:30");
+                holder.beginTime.setText("18:10");
+                holder.endTime.setText("19:40");
             }
             break;
         }
