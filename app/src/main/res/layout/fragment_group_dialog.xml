@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:inputType="textCapCharacters"
         android:maxLength="10"
+        android:maxLines="1"
         android:digits="0,1,2,3,4,5,6,7,8,9,йцукенгшщзхъфывапролджэёячсмитьбю,ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЁЯЧСМИТЬБЮ,-()"
         android:layout_gravity="center_vertical|center_horizontal|center"
         android:layout_marginBottom="16dp"

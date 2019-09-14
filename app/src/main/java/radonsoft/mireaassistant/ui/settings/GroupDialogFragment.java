@@ -53,7 +53,7 @@ public class GroupDialogFragment extends DialogFragment implements Button.OnClic
         View view = inflater.inflate(R.layout.fragment_group_dialog, container, false);
         //configure editText and show keyboard
         editText = view.findViewById(R.id.group_input);
-        editText.setFilters(new InputFilter[]{new InputFilter.AllCaps(), new InputFilter.LengthFilter(20)});
+        editText.setFilters(new InputFilter[]{new InputFilter.AllCaps(), new InputFilter.LengthFilter(13)});
         editText.requestFocus();
         imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);

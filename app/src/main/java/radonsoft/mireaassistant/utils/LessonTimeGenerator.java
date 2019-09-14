@@ -7,10 +7,10 @@ public class LessonTimeGenerator {
         switch (number){
             case 0: return new Pair<>("09:00", "10:30");
             case 1: return new Pair<>("10:40", "12:10");
-            case 2: return new Pair<>("13:00", "14:30");
-            case 3: return new Pair<>("14:40", "16:10");
-            case 4: return new Pair<>("16:20", "17:50");
-            case 5: return new Pair<>("18:00", "19:30");
+            case 2: return new Pair<>("13:10", "14:40");
+            case 3: return new Pair<>("14:50", "16:20");
+            case 4: return new Pair<>("16:30", "18:00");
+            case 5: return new Pair<>("18:10", "19:40");
         }
         return new Pair<>("","");
     }

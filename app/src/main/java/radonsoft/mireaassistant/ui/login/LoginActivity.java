@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         StyleApplicator.style(this);
         ButterKnife.bind(this);
         viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        groupEditText.setFilters(new InputFilter[]{new InputFilter.AllCaps(), new InputFilter.LengthFilter(20)});
+        groupEditText.setFilters(new InputFilter[]{new InputFilter.AllCaps(), new InputFilter.LengthFilter(13)});
 
         groupEditText.addTextChangedListener(new TextWatcher() {
 
