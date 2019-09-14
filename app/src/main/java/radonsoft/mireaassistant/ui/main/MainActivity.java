@@ -11,7 +11,6 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.Objects;
@@ -121,6 +120,7 @@ public class MainActivity extends AppCompatActivity implements GroupDialogFragme
 
     public void completeDownload() {
         try {
+            viewModel.updateWidget(this);
             Schedule schedule = (Schedule) fragmentManager.findFragmentByTag("one");
             schedule.updateRecycler();
             saveGroupName(groupName);

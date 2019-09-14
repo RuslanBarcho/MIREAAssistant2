@@ -1,10 +1,15 @@
 package radonsoft.mireaassistant.ui.main;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.appwidget.AppWidgetManager;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.arch.persistence.room.Room;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +28,7 @@ import radonsoft.mireaassistant.network.models.Schedule_;
 import radonsoft.mireaassistant.network.NetworkSingleton;
 import radonsoft.mireaassistant.network.ScheduleService;
 import radonsoft.mireaassistant.R;
+import radonsoft.mireaassistant.ui.widget.ScheduleWidget;
 import retrofit2.HttpException;
 
 public class MainViewModel extends ViewModel {
@@ -103,6 +109,14 @@ public class MainViewModel extends ViewModel {
             return toCheck;
         } else {
             return "―";
+        }
+    }
+
+    public void updateWidget(Activity context){
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+        int[] ids = AppWidgetManager.getInstance(context.getApplication()).getAppWidgetIds(new ComponentName(context.getApplication(), ScheduleWidget.class));
+        if (ids.length > 0){
+            appWidgetManager.notifyAppWidgetViewDataChanged(ids, R.id.scheduleListView);
         }
     }
 

@@ -18,6 +18,7 @@ import butterknife.OnLongClick;
 import radonsoft.mireaassistant.database.AppDatabase;
 import radonsoft.mireaassistant.R;
 import radonsoft.mireaassistant.ui.main.MainActivity;
+import radonsoft.mireaassistant.utils.CalendarUtil;
 import radonsoft.mireaassistant.utils.ScheduleViewPagerAdapter;
 
 import android.support.annotation.NonNull;
@@ -34,7 +35,6 @@ public class Schedule extends Fragment {
     int currentDay = 0;
     int weekType = 0;
     View mRootView;
-    AppDatabase db;
     private ArrayList<SchedulePageFragment> fragments;
     public SwipeRefreshLayout mSwipeRefreshLayout;
     private ScheduleViewPagerAdapter viewPagerAdapter;
@@ -66,7 +66,7 @@ public class Schedule extends Fragment {
     @OnLongClick(R.id.week_button)
     boolean longClickWeekButton(){
         int temp = weekType;
-        getWeekNumber();
+        weekType = CalendarUtil.getWeekType();
         if(temp != weekType){
             configureWeekButton();
         }
@@ -83,16 +83,13 @@ public class Schedule extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        db = Room.databaseBuilder(getContext(), AppDatabase.class, "schedule")
-                .allowMainThreadQueries()
-                .build();
         daysArray = getResources().getStringArray(R.array.schedule_days);
         if (savedInstanceState!= null){
             weekType = savedInstanceState.getInt("weekType");
             currentDay = savedInstanceState.getInt("currentDay");
         } else {
-            getWeekNumber();
-            currentDay = getToday();
+            weekType = CalendarUtil.getWeekType();
+            currentDay = CalendarUtil.getToday();
         }
     }
 
@@ -158,29 +155,6 @@ public class Schedule extends Fragment {
         for (int i = 0; i< 6; i++){
             ((SchedulePageFragment) getChildFragmentManager().getFragments().get(i)).updateRecyclerView(weekType);
         }
-    }
-
-    private void getWeekNumber() {
-        GregorianCalendar gc = new GregorianCalendar();
-        gc.add(Calendar.DATE, 0);
-        int weekNumber = gc.get(Calendar.WEEK_OF_YEAR) - 1;
-        Calendar calendar = Calendar.getInstance();
-        int today = (calendar.get(Calendar.DAY_OF_WEEK));
-        if (today == 1){
-            weekNumber ++;
-        }
-        if (weekNumber % 2 == 0){
-            weekType = 1;
-        } else {
-            weekType = 0;
-        }
-    }
-
-    public int getToday(){
-        Calendar calendar = Calendar.getInstance();
-        int today = (calendar.get(Calendar.DAY_OF_WEEK)) - 2;
-        if (today == -1) today = 0;
-        return today;
     }
 
     private void configureWeekButton(){
