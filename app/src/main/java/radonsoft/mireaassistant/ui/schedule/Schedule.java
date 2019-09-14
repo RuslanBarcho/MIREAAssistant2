@@ -1,7 +1,6 @@
 package radonsoft.mireaassistant.ui.schedule;
 
 import android.annotation.SuppressLint;
-import android.arch.persistence.room.Room;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -15,7 +14,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnLongClick;
-import radonsoft.mireaassistant.database.AppDatabase;
 import radonsoft.mireaassistant.R;
 import radonsoft.mireaassistant.ui.main.MainActivity;
 import radonsoft.mireaassistant.utils.CalendarUtil;
@@ -26,8 +24,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.Objects;
 
 public class Schedule extends Fragment {
