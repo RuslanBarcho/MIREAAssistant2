@@ -9,7 +9,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -18,11 +17,9 @@ import radonsoft.mireaassistant.R;
 import radonsoft.mireaassistant.ui.main.MainActivity;
 import radonsoft.mireaassistant.utils.CalendarUtil;
 import radonsoft.mireaassistant.utils.ScheduleViewPagerAdapter;
-
 import android.support.annotation.NonNull;
 import android.widget.Button;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -31,10 +28,7 @@ public class Schedule extends Fragment {
     int currentDay = 0;
     int weekType = 0;
     View mRootView;
-    private ArrayList<SchedulePageFragment> fragments;
     public SwipeRefreshLayout mSwipeRefreshLayout;
-    private ScheduleViewPagerAdapter viewPagerAdapter;
-    String[] daysArray = {"Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"};
 
     @BindView(R.id.scheduleViewPager)
     ViewPager viewPager;
@@ -79,7 +73,6 @@ public class Schedule extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        daysArray = getResources().getStringArray(R.array.schedule_days);
         if (savedInstanceState!= null){
             weekType = savedInstanceState.getInt("weekType");
             currentDay = savedInstanceState.getInt("currentDay");
@@ -95,10 +88,11 @@ public class Schedule extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mRootView = inflater.inflate(R.layout.fragment_schedule, container, false);
+        String[] daysArray = getResources().getStringArray(R.array.schedule_days);
         ButterKnife.bind(this, mRootView);
         configureWeekButton();
 
-        fragments = new ArrayList<>();
+        ArrayList<SchedulePageFragment> fragments = new ArrayList<>();
         for (int i = 0; i<6; i++){
             Bundle bundle = new Bundle();
             bundle.putInt("day", i);
@@ -108,7 +102,7 @@ public class Schedule extends Fragment {
             fragments.add(fragment);
         }
 
-        viewPagerAdapter = new ScheduleViewPagerAdapter(getChildFragmentManager(), fragments, getContext());
+        ScheduleViewPagerAdapter viewPagerAdapter = new ScheduleViewPagerAdapter(getChildFragmentManager(), fragments, getContext());
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setOffscreenPageLimit(6);
         tabLayout.setupWithViewPager(viewPager);
@@ -140,7 +134,7 @@ public class Schedule extends Fragment {
         );
         mSwipeRefreshLayout.setOnRefreshListener(() -> {
             mSwipeRefreshLayout.setRefreshing(true);
-            ((MainActivity) getActivity()).updateSchedule();
+            ((MainActivity) Objects.requireNonNull(getActivity())).updateSchedule();
         });
         mSwipeRefreshLayout.setEnabled(false);
 
@@ -148,7 +142,7 @@ public class Schedule extends Fragment {
     }
 
     public void updateRecycler(){
-        for (int i = 0; i< 6; i++){
+        for (int i = 0; i < 6; i++){
             ((SchedulePageFragment) getChildFragmentManager().getFragments().get(i)).updateRecyclerView(weekType);
         }
     }
@@ -166,13 +160,5 @@ public class Schedule extends Fragment {
         super.onSaveInstanceState(outState);
         outState.putInt("currentDay", currentDay);
         outState.putInt("weekType", weekType);
-    }
-
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        if (!hidden){
-
-        }
     }
 }

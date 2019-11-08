@@ -22,34 +22,32 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="09:00"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#555555"
-            android:textSize="19dp" />
+            android:textSize="19sp" />
 
         <TextView
             android:id="@+id/item_end_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/item_begin_time"
             android:layout_below="@+id/item_begin_time"
+            android:layout_alignStart="@+id/item_begin_time"
             android:layout_marginBottom="16dp"
             android:text="10:30"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#555555"
-            android:textSize="19dp" />
+            android:textSize="19sp" />
 
         <TextView
             android:id="@+id/item_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginBottom="5dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="5dp"
             android:layout_toLeftOf="@+id/item_class"
             android:layout_toRightOf="@+id/item_begin_time"
             android:text="Large Text"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/colorTextPrimary"
             android:textSize="17sp" />
 
         <TextView
@@ -61,12 +59,10 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="16dp"
             android:background="@drawable/black_bubble"
-            android:paddingBottom="2dp"
             android:paddingLeft="9dp"
-            android:paddingRight="9dp"
             android:paddingTop="2dp"
-            android:text="А-410"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:paddingRight="9dp"
+            android:paddingBottom="2dp"
             android:textColor="@android:color/white"
             android:textColorLink="@android:color/white"
             android:textSize="15sp"
@@ -82,7 +78,7 @@
             android:layout_toRightOf="@+id/item_begin_time"
             android:gravity="top"
             android:text="Small Text"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/colorTextAddiction"
             android:textSize="15sp"
             android:visibility="visible" />
     </RelativeLayout>

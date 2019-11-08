@@ -3,6 +3,8 @@ package radonsoft.mireaassistant.ui.settings;
 import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -22,6 +24,7 @@ import radonsoft.mireaassistant.ui.main.MainActivity;
 
 import android.support.annotation.NonNull;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -38,6 +41,9 @@ public class Settings extends Fragment {
 
     @BindView(R.id.test_button4)
     Button test_button_3;
+
+    @BindView(R.id.settings_about_message)
+    TextView aboutView;
 
     @OnClick(R.id.button_feedback)
     void doFeedback(){
@@ -70,6 +76,14 @@ public class Settings extends Fragment {
         // Inflate the layout for this fragment
         mRootView = inflater.inflate(R.layout.fragment_settings, container, false);
         ButterKnife.bind(this, mRootView);
+
+        try {
+            PackageInfo pInfo = getContext().getPackageManager().getPackageInfo(getContext().getPackageName(), 0);
+            aboutView.setText(getString(R.string.about_title, pInfo.versionName));
+        } catch (PackageManager.NameNotFoundException e) {
+            aboutView.setText(getString(R.string.about_title,""));
+        }
+
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         groupButton.setText(preferences.getString("GroupName", "null"));
         return mRootView;

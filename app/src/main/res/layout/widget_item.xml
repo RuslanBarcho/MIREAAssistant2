@@ -41,7 +41,7 @@
             android:layout_toLeftOf="@+id/item_widget_class"
             android:layout_toRightOf="@+id/item_widget_begin_time"
             android:text="Large Text"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/colorTextPrimary"
             android:textSize="17sp" />
 
         <TextView
@@ -58,7 +58,6 @@
             android:paddingRight="9dp"
             android:paddingTop="2dp"
             android:text="А-410"
-            android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@android:color/white"
             android:textColorLink="@android:color/white"
             android:textSize="15sp"
@@ -75,7 +74,7 @@
             android:layout_toRightOf="@+id/item_widget_begin_time"
             android:gravity="top"
             android:text="Small Text"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/colorTextAddiction"
             android:textSize="15sp"
             android:visibility="visible" />
     </RelativeLayout>

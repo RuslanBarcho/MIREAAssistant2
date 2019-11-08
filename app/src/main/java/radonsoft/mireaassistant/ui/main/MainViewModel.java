@@ -112,12 +112,11 @@ public class MainViewModel extends ViewModel {
         }
     }
 
-    public void updateWidget(Activity context){
+    void updateWidget(Activity context){
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         int[] ids = AppWidgetManager.getInstance(context.getApplication()).getAppWidgetIds(new ComponentName(context.getApplication(), ScheduleWidget.class));
         if (ids.length > 0){
             appWidgetManager.notifyAppWidgetViewDataChanged(ids, R.id.scheduleListView);
         }
     }
-
 }
