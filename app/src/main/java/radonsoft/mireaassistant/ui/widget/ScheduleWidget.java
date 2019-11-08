@@ -4,9 +4,7 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.widget.RemoteViews;
-
 import radonsoft.mireaassistant.R;
 import radonsoft.mireaassistant.utils.CalendarUtil;
 import radonsoft.mireaassistant.utils.ScheduleWidgetDataProvider;
@@ -58,9 +56,7 @@ public class ScheduleWidget extends AppWidgetProvider {
     }
 
     @Override
-    public void onDisabled(Context context) {
-
-    }
+    public void onDisabled(Context context) { }
 
 }
 

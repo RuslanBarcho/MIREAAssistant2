@@ -2,8 +2,8 @@ package radonsoft.mireaassistant.utils;
 
 import android.support.v4.util.Pair;
 
-public class LessonTimeGenerator {
-    public static Pair<String, String> getTiming(int number){
+class LessonTimeGenerator {
+    static Pair<String, String> getTiming(int number){
         switch (number){
             case 0: return new Pair<>("09:00", "10:30");
             case 1: return new Pair<>("10:40", "12:10");

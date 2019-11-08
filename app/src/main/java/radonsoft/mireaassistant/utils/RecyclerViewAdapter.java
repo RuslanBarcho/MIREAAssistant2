@@ -1,15 +1,13 @@
 package radonsoft.mireaassistant.utils;
 
 import android.support.annotation.NonNull;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 import java.util.List;
-
 import radonsoft.mireaassistant.database.TableSchedule;
 import radonsoft.mireaassistant.R;
 
@@ -35,38 +33,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull final RecyclerViewHolder holder, final int position) {
-        switch(position){
-            case 0: {
-                holder.beginTime.setText("09:00");
-                holder.endTime.setText("10:30");
-            }
-            break;
-            case 1: {
-                holder.beginTime.setText("10:40");
-                holder.endTime.setText("12:10");
-            }
-            break;
-            case 2: {
-                holder.beginTime.setText("13:10");
-                holder.endTime.setText("14:40");
-            }
-            break;
-            case 3: {
-                holder.beginTime.setText("14:50");
-                holder.endTime.setText("16:20");
-            }
-            break;
-            case 4: {
-                holder.beginTime.setText("16:30");
-                holder.endTime.setText("18:00");
-            }
-            break;
-            case 5: {
-                holder.beginTime.setText("18:10");
-                holder.endTime.setText("19:40");
-            }
-            break;
-        }
+        Pair<String, String> time = LessonTimeGenerator.getTiming(position);
+        holder.beginTime.setText(time.first);
+        holder.endTime.setText(time.second);
         String nameToSet;
         if (!tableScheduleList.get(position).getType().equals("")){
             nameToSet = tableScheduleList.get(position).getName() + ", " + tableScheduleList.get(position).getType();
@@ -88,12 +57,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         public TextView name;
         public TextView room;
-        public TextView teacher;
+        TextView teacher;
+        TextView beginTime;
+        TextView endTime;
 
-        public TextView beginTime;
-        public TextView endTime;
-
-        public RecyclerViewHolder(View itemView) {
+        RecyclerViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.item_name);
             room = itemView.findViewById(R.id.item_class);

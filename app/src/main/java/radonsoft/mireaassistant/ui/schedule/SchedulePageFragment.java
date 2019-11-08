@@ -1,6 +1,5 @@
 package radonsoft.mireaassistant.ui.schedule;
 
-
 import android.arch.persistence.room.Room;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,16 +9,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import radonsoft.mireaassistant.database.AppDatabase;
 import radonsoft.mireaassistant.utils.RecyclerViewAdapter;
 import radonsoft.mireaassistant.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class SchedulePageFragment extends Fragment {
 
     @BindView(R.id.scheduleRecycler)

@@ -11,7 +11,6 @@ import android.support.v4.app.DialogFragment;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,14 +59,10 @@ public class GroupDialogFragment extends DialogFragment implements Button.OnClic
         editText.addTextChangedListener(new TextWatcher() {
 
             @Override
-            public void afterTextChanged(Editable s) {
-                //editText.setSelection(editText.getText().length());
-            }
+            public void afterTextChanged(Editable s) { }
 
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -96,7 +91,7 @@ public class GroupDialogFragment extends DialogFragment implements Button.OnClic
     }
 
     @Override
-    public void onViewCreated(View v, Bundle savedInstanceState){
+    public void onViewCreated(@NonNull View v, Bundle savedInstanceState){
         super.onViewCreated(v, savedInstanceState);
     }
 
